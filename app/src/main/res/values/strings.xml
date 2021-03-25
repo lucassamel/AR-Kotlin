@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AR-Kotlin</string>
+    <string name="facebook_app_id">274342697468145</string>
+    <string name="fb_login_protocol_scheme">fb274342697468145</string>
 </resources>
