@@ -1,14 +1,14 @@
-package lucassamel.br.ar_kotlin
+package lucassamel.br.ar_kotlin.ui.login
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -19,8 +19,7 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.login_fragment.*
-import kotlin.math.log
+import lucassamel.br.ar_kotlin.R
 
 class LoginFragment : Fragment() {
 
@@ -41,8 +40,9 @@ class LoginFragment : Fragment() {
         // Initialize Facebook Login button
         callbackManager = CallbackManager.Factory.create()
 
-        loginButton = login_button
+       // loginButton = findViewById(R.id.login_button)
         loginButton.setPermissions("email", "public_profile")
+        loginButton.fragment = this
         loginButton.registerCallback(
                 callbackManager,
                 object : FacebookCallback<LoginResult>{

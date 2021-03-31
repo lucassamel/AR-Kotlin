@@ -1,4 +1,4 @@
-package lucassamel.br.ar_kotlin
+package lucassamel.br.ar_kotlin.ui.login
 
 import androidx.lifecycle.ViewModel
 
