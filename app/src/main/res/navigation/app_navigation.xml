@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_cadastroFragment"
             app:destination="@id/cadastroFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_listCarroFragment"
+            app:destination="@id/listCarroFragment" />
     </fragment>
     <fragment
         android:id="@+id/cadastroFragment"
@@ -22,5 +25,23 @@
         <action
             android:id="@+id/action_cadastroFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listCarroFragment"
+        android:name="lucassamel.br.ar_kotlin.ui.carro.list.ListCarroFragment"
+        android:label="list_carro_fragment"
+        tools:layout="@layout/list_carro_fragment" >
+        <action
+            android:id="@+id/action_listCarroFragment_to_formCarroFragment"
+            app:destination="@id/formCarroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formCarroFragment"
+        android:name="lucassamel.br.ar_kotlin.ui.carro.form.FormCarroFragment"
+        android:label="form_carro_fragment"
+        tools:layout="@layout/form_carro_fragment" >
+        <action
+            android:id="@+id/action_formCarroFragment_to_listCarroFragment"
+            app:destination="@id/listCarroFragment" />
     </fragment>
 </navigation>
