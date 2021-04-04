@@ -1,5 +1,6 @@
 package lucassamel.br.ar_kotlin.ui.marca
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,4 +29,5 @@ class MarcaViewModel : ViewModel() {
             }
         }
     }
+
 }

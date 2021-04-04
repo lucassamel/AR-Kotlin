@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.list_carro_fragment.*
 import lucassamel.br.ar_kotlin.R
 
 class ListCarroFragment : Fragment() {
@@ -24,7 +26,10 @@ class ListCarroFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ListCarroViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        fabNovoCarro.setOnClickListener {
+            findNavController().navigate((R.id.action_listCarroFragment_to_marcaFragment))
+        }
     }
 
 }
