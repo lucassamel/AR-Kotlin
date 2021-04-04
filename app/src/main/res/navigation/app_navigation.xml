@@ -32,8 +32,8 @@
         android:label="list_carro_fragment"
         tools:layout="@layout/list_carro_fragment" >
         <action
-            android:id="@+id/action_listCarroFragment_to_formCarroFragment"
-            app:destination="@id/formCarroFragment" />
+            android:id="@+id/action_listCarroFragment_to_marcaFragment"
+            app:destination="@id/marcaFragment" />
     </fragment>
     <fragment
         android:id="@+id/formCarroFragment"
@@ -43,5 +43,14 @@
         <action
             android:id="@+id/action_formCarroFragment_to_listCarroFragment"
             app:destination="@id/listCarroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/marcaFragment"
+        android:name="lucassamel.br.ar_kotlin.ui.marca.MarcaFragment"
+        android:label="marca_fragment"
+        tools:layout="@layout/marca_fragment" >
+        <action
+            android:id="@+id/action_marcaFragment_to_formCarroFragment"
+            app:destination="@id/formCarroFragment" />
     </fragment>
 </navigation>
