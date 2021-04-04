@@ -5,6 +5,8 @@ import retrofit2.http.GET
 
 interface ProjectService {
 
-    @GET("fipe/api/v1/carros/marcas")
-    fun all(): List<ProjectMarca>
+    @GET("carros/marcas")
+    suspend fun all(): List<ProjectMarca>
+
+
 }
