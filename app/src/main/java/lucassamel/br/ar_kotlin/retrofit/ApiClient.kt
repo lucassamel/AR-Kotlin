@@ -11,7 +11,7 @@ object ApiClient {
         private fun getRetrofit(): Retrofit{
             if (instance == null)
                 instance = Builder()
-                    .baseUrl("https://parallelum.com.br/fipe/api/v1")
+                    .baseUrl("https://parallelum.com.br/fipe/api/v1/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             return instance as Retrofit

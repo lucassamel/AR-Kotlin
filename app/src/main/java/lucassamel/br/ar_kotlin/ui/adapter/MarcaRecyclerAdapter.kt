@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.marca_recycler.view.*
 import lucassamel.br.ar_kotlin.R
 import lucassamel.br.ar_kotlin.model.Marca
+import lucassamel.br.ar_kotlin.model.ProjectMarca
 
 class MarcaRecyclerAdapter(
-    private val marcas: List<Marca>,
+    private val marcas: List<ProjectMarca>,
     private val actionClick: (Marca) -> Unit
 ): RecyclerView.Adapter<MarcaRecyclerAdapter.MarcaViewHolder>() {
 
@@ -36,16 +36,17 @@ class MarcaRecyclerAdapter(
         override fun onBindViewHolder(holder: MarcaRecyclerAdapter.MarcaViewHolder, position:
         Int) {
             val marca = marcas[position]
-            holder.textMarca.text = marca.marca
+            holder.textMarca.text = marca.nome
 
             holder.itemView.btnSelectMarca.setOnClickListener {
                 //selectMarca(marca)
             }
 
-            holder.itemView.setOnClickListener {
-                actionClick(marca)
-            }
+//            holder.itemView.setOnClickListener {
+//                actionClick(marca)
+//            }
         }
+
 
     override fun getItemCount(): Int = marcas.size
 

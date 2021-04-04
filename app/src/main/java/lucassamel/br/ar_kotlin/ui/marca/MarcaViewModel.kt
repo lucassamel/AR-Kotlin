@@ -26,6 +26,7 @@ class MarcaViewModel : ViewModel() {
                 _marcas.value = brands
             } catch (e: Exception){
                 _msg.value = "${e.message}"
+                Log.i("API","${e.message}")
             }
         }
     }
