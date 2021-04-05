@@ -1,6 +1,11 @@
 package lucassamel.br.ar_kotlin.model
 
 class ProjectModelo(
-    var nome: String? = null,
-    var codigo: String? = null
-)
+//     nome: String? = null,
+//     codigo: Long? = null,
+//     modelo: Modelo? = null,
+     var modelos: List<Modelo>
+)//: ProjectMarca(nome, codigo, modelo)
+{
+
+}

@@ -12,10 +12,6 @@ import lucassamel.br.ar_kotlin.R
 
 class ListCarroFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ListCarroFragment()
-    }
-
     private lateinit var viewModel: ListCarroViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

@@ -9,13 +9,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.marca_fragment.*
+import androidx.navigation.fragment.findNavController
 import lucassamel.br.ar_kotlin.R
-import lucassamel.br.ar_kotlin.model.AppUtil
-import lucassamel.br.ar_kotlin.model.ProjectMarca
-import lucassamel.br.ar_kotlin.ui.adapter.MarcaRecyclerAdapter
 
 class MarcaFragment : Fragment() {
 
@@ -41,6 +38,12 @@ class MarcaFragment : Fragment() {
                     android.R.layout.simple_list_item_1,
                     it
                 )
+            listViewPorjectMarca.setOnItemClickListener { parent, view, position, id ->
+                val bundle = bundleOf(
+                    "codigo" to it[position].codigo
+                )
+                findNavController().navigate(R.id.action_marcaFragment_to_formCarroFragment, bundle)
+            }
         })
 
         viewModel.msg.observe(viewLifecycleOwner, Observer {

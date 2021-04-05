@@ -1,9 +1,8 @@
 package lucassamel.br.ar_kotlin.model
 
-class ProjectMarca(
+open class ProjectMarca(
     var nome: String? = null,
-    var codigo: String? = null,
-    var modelo: ProjectModelo? = null
+    var codigo: Long? = null,
     ){
     override fun toString(): String {
         return "$nome"

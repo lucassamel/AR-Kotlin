@@ -5,6 +5,6 @@ import com.google.firebase.firestore.DocumentId
 class Carro(
     @DocumentId
     var modelo: String? = null,
-    var marca : String? = null,
+    var marca : String? = null
 ) {
 }
