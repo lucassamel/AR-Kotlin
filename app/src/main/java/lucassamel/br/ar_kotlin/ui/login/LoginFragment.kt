@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.facebook.AccessToken
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.cadastro_fragment.*
 import kotlinx.android.synthetic.main.login_fragment.*
 import lucassamel.br.ar_kotlin.R
 
@@ -39,6 +41,24 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.login_fragment, container, false)
 
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
+        viewModel.status.observe(viewLifecycleOwner, Observer {
+            if (it){
+                findNavController().navigate(R.id.action_loginFragment_to_listCarroFragment)
+            }
+        })
+
+        viewModel.msg.observe(viewLifecycleOwner, Observer {
+            if (!it.isNullOrBlank())
+                Toast
+                    .makeText(
+                        requireContext(),
+                        it,
+                        Toast.LENGTH_LONG
+                    ).show()
+
+        })
+
 
 
         // Initialize Facebook Login button
@@ -72,8 +92,35 @@ class LoginFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btnLogin.setOnClickListener {
+            val email = editTextEmail.text.toString()
+            val senha = editTextSenha.text.toString()
+            viewModel.verificarLogin(email, senha)
+
+        }
+
+        btnCadastrar.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment)
+        }
+
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        btnLogin.setOnClickListener {
+            val email = editTextEmail.text.toString()
+            val senha = editTextSenha.text.toString()
+            viewModel.verificarLogin(email, senha)
+
+        }
+
+        btnCadastrar.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment)
+        }
 
         // Pass the activity result back to the Facebook SDK
         callbackManager.onActivityResult(requestCode, resultCode, data)
