@@ -34,7 +34,7 @@ class CarroRecyclerAdapter(private val carros: List<Modelo>,
     Int) {
         val carro = carros[position]
         holder.textModeloCarro.text = carro.nome
-        holder.textModeloCarro.text = carro.marca
+        holder.textMarcaCarro.text = carro.marca
 
         holder.itemView.btnDeleteCarro.setOnClickListener {
             deleteTrip(carro)

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -31,6 +32,7 @@ class FormCarroFragment : Fragment() {
     ): View? {
 
         val codigo = arguments?.getLong("codigo")
+        val modelo = arguments?.get("modelo").toString()
         if (codigo == null)
             findNavController().popBackStack()
 
@@ -43,11 +45,15 @@ class FormCarroFragment : Fragment() {
 
         val listaModelos = mutableListOf<String>()
 
+
         viewModel = ViewModelProvider(this, viewModelFactory).get(FormCarroViewModel::class.java)
 
         val root = inflater.inflate(R.layout.form_carro_fragment, container, false)
 
+
         viewModel.modelos.observe(viewLifecycleOwner, Observer {
+
+            textViewMarcaModelo.text = modelo
 
             it.modelos.forEach {
                 listaModelos.add(it.nome!!)
@@ -105,7 +111,7 @@ class FormCarroFragment : Fragment() {
 
         btnCadastrarCarro.setOnClickListener {
             val modelo = spinnerModelos.selectedItem.toString()
-            val marca = editTextMarcaModelo.text.toString()
+            val marca = textViewMarcaModelo.text.toString()
 
             viewModel.insertCarro(modelo,marca)
 

@@ -40,7 +40,8 @@ class MarcaFragment : Fragment() {
                 )
             listViewPorjectMarca.setOnItemClickListener { parent, view, position, id ->
                 val bundle = bundleOf(
-                    "codigo" to it[position].codigo
+                    "codigo" to it[position].codigo,
+                    "modelo" to it[position].nome
                 )
                 findNavController().navigate(R.id.action_marcaFragment_to_formCarroFragment, bundle)
             }
