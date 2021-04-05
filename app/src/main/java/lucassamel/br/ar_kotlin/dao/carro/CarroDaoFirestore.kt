@@ -6,6 +6,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import lucassamel.br.ar_kotlin.model.Carro
+import lucassamel.br.ar_kotlin.model.Modelo
 
 class CarroDaoFirestore: CarroDao {
 
@@ -13,19 +14,19 @@ class CarroDaoFirestore: CarroDao {
         .getInstance()
         .collection("carros")
 
-    override fun insert(carro: Carro): Task<Void> {
+    override fun insert(modelo: Modelo): Task<Void> {
         return collection
-            .document(carro.modelo!!)
-            .set(carro)
+            .document(modelo.nome!!)
+            .set(modelo)
     }
-    override fun delete(carro: Carro): Task<Void> {
+    override fun delete(modelo: Modelo): Task<Void> {
         return collection
-            .document(carro.modelo!!)
+            .document(modelo.nome!!)
             .delete()
     }
-    override fun get(modelo: String): Task<DocumentSnapshot> {
+    override fun get(nome: String): Task<DocumentSnapshot> {
         return collection
-            .document(modelo)
+            .document(nome)
             .get()
     }
 

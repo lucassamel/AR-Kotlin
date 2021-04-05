@@ -5,16 +5,17 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import lucassamel.br.ar_kotlin.model.Carro
+import lucassamel.br.ar_kotlin.model.Modelo
 
 interface CarroDao {
 
-    fun insert(carro: Carro): Task<Void>
+    fun insert(carro: Modelo): Task<Void>
 
-    fun delete(carro: Carro) : Task<Void>
+    fun delete(carro: Modelo) : Task<Void>
 
-    fun get(modelo: String): Task<DocumentSnapshot>
+    fun get(nome: String): Task<DocumentSnapshot>
 
-    fun selectByMarca(marca: String): Task<QuerySnapshot>
+    fun selectByMarca(nome: String): Task<QuerySnapshot>
 
     fun all(): CollectionReference
 }

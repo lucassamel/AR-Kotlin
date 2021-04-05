@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.form_carro_fragment.*
 import lucassamel.br.ar_kotlin.R
+import lucassamel.br.ar_kotlin.dao.carro.CarroDaoFirestore
 import lucassamel.br.ar_kotlin.model.Modelo
 import lucassamel.br.ar_kotlin.model.ProjectModelo
 
@@ -33,12 +34,12 @@ class FormCarroFragment : Fragment() {
         if (codigo == null)
             findNavController().popBackStack()
 
-        viewModelFactory = FormCarroViewModelFactory(codigo!!)
-        Toast.makeText(
-            requireContext(),
-            "$codigo",
-            Toast.LENGTH_LONG
-        ).show()
+        viewModelFactory = FormCarroViewModelFactory(codigo!!,CarroDaoFirestore())
+//        Toast.makeText(
+//            requireContext(),
+//            "$codigo",
+//            Toast.LENGTH_LONG
+//        ).show()
 
         val listaModelos = mutableListOf<String>()
 
@@ -100,6 +101,16 @@ class FormCarroFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FormCarroViewModel::class.java)
+
+
+        btnCadastrarCarro.setOnClickListener {
+            val modelo = spinnerModelos.selectedItem.toString()
+            val marca = editTextMarcaModelo.text.toString()
+
+            viewModel.insertCarro(modelo,marca)
+
+            findNavController().navigate(R.id.action_formCarroFragment_to_listCarroFragment)
+        }
 
     }
 
